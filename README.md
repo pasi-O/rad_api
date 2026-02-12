@@ -33,6 +33,7 @@ Returns all radiology procedures.
     "avg_duration_min": 5
   }
 ]
+```
 
 ### 2. GET/ procedures/:cpt_code
 return a single procedure by CPT code
@@ -76,6 +77,7 @@ Returns all radiology procedures.
     "avg_duration_min": 5
   }
 ]
+```
 
 ### 2. GET/procedures/:cpt_code
 Returns a single procedures by CPT code.
@@ -90,6 +92,7 @@ Returns a single procedures by CPT code.
   "contrast": "Yes",
   "avg_duration_min": 20
 }
+```
 
 ### 3. GET /procedures?modality=CT
 Filters procedures by modality
@@ -104,7 +107,7 @@ Filters procedures by modality
     "avg_duration_min": 20
   }
 ]
-
+```
 ### 4. GET /procedures?body_part=Chest
 filters by body part
 
