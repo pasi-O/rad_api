@@ -35,20 +35,6 @@ Returns all radiology procedures.
 ]
 ```
 
-### 2. GET/ procedures/:cpt_code
-return a single procedure by CPT code
-
-Example:
-GET /procedures/71260
-
-sample response:
-# Radiology Procedures API
-
-A simple REST API for querying radiology procedure data stored in a PostgreSQL database.  
-This project uses a CSV dataset of common radiology procedures (CPT codes, modality, body part, contrast usage, and average duration).
-
----
-
 ## Features
 
 - Retrieve all radiology procedures
