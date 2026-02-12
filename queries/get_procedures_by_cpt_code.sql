@@ -1,0 +1,1 @@
+SELECT * FROM radiology_procedures WHERE cpt_code = %s;
