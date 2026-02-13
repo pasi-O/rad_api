@@ -9,16 +9,14 @@ This project uses a CSV dataset of common radiology procedures (CPT codes, modal
 
 - Retrieve all radiology procedures
 - Look up a procedure by CPT code
-- Filter by modality, body part, contrast, or duration
-- Combine multiple filters
-- Optional CRUD routes for adding, updating, or deleting procedures
-- Optional analytics routes (e.g., modality counts)
+- Update a procedure by CPT Code
+- Add a procedure by CPT code
 
 ---
 
 ## API Routes
 
-### 1. GET /procedures  
+### 1. GET / 
 Returns all radiology procedures.
 
 **Example Response:**
@@ -35,7 +33,7 @@ Returns all radiology procedures.
 ]
 ```
 
-### 2. GET/procedures/:cpt_code
+### 2. GET /procedures/{cpt_code}
 Returns a single procedures by CPT code.
 
 **Example Response:**
@@ -50,11 +48,11 @@ Returns a single procedures by CPT code.
 }
 ```
 
-### 8. POST /procedures
+### 3. POST /procedures/{cpt_code}
 adds a new procedure
 
-PUT /Procedures/:cpt_code
-updates an existing procedure
+### 4. PUT /procedures/{cpt_code}
+updates an existing procedure by cpt_code
 
 
 

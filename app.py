@@ -3,6 +3,7 @@ from db import get_connection
 from models import procedure_to_dict
 from pathlib import Path
 from models import ProcedureCreate
+from models import ProcedureUpdate
 
 app = FastAPI()
 
@@ -25,7 +26,7 @@ def get_all_procedures():
     return all_procedures
 
 #Get procedure by cpt_code
-@app.get('/procedures/{cpt_code}')
+@app.get('/procedure/{cpt_code}')
 def get_procedure_cpt_code(cpt_code: str):
     conn = get_connection()
     cur = conn.cursor()
@@ -36,7 +37,7 @@ def get_procedure_cpt_code(cpt_code: str):
     return procedure_by_cpt
 
 # add a procedure
-@app.post('/procedures')
+@app.post('/procedure')
 def create_procedure(procedure: ProcedureCreate):
       conn = get_connection()
       cur = conn.cursor()
@@ -63,7 +64,28 @@ def create_procedure(procedure: ProcedureCreate):
            
 
 # update a procedure
-@app.put("/procedures/:{cpt_code}")
-def update_procedure(cpt_code: str):
-    return None
+@app.put("/procedure/{cpt_code}")
+def update_procedure(cpt_code: str, procedure: ProcedureCreate):
+    # find procedure by 
+    procedure = get_procedure_cpt_code(cpt_code)
+    if not procedure:
+        return {"Error": "procedure with cpt_code ${cpt_code} does not exist"}
+    
+    conn = get_connection()
+    cur = conn.cursor()
+    query = load_query("update_procedure")
+    cur.execute(query, (
+        procedure[1],
+        procedure[2],
+        procedure[3],
+        procedure[4],
+        procedure[5],
+        cpt_code
+    ))
+    updated_row = cur.fetchone()
+    conn.commit()
+    cur.close()
+    conn.close()
+    return {"message" : "Update succesful", "procedure": procedure_to_dict(updated_row)}
+
 

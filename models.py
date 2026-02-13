@@ -7,7 +7,12 @@ class ProcedureCreate(BaseModel):
     body_part: str
     contrast: str | None = None
     avg_duration_min: int
-
+class ProcedureUpdate(BaseModel):
+    cpt_code: str | None = None
+    modality:str | None = None
+    body_part:str | None = None
+    contrast: str | None = None
+    avg_duration_min: int | None = None
 
 def procedure_to_dict(row):
     return {
